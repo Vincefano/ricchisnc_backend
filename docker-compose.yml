@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: src/docker/Dockerfile.development
-    command: python src/manage.py runserver 0.0.0.0:8000
+    command: ["bash", "./src/config/bootstrap.sh"]
     volumes:
       - .:/app
     ports:

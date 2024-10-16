@@ -3,3 +3,4 @@ psycopg2
 djangorestframework
 django-oauth-toolkit
 django-environ
+django-cors-headers
