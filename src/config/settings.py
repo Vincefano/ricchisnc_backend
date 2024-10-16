@@ -36,7 +36,23 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    "oauth2_provider",
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "oauth2_provider.contrib.rest_framework.OAuth2Authentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ],
+}
+
+OAUTH2_PROVIDER = {
+    "CLIENT_ID_GENERATOR": "oauth2_provider.generators.ClientIdGenerator",
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
