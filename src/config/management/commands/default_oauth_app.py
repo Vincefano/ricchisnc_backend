@@ -21,7 +21,7 @@ class Command(CreateApplicationCommand):
     def handle(self, *args, **kwargs):
         kwargs["name"] = settings.OAUTH2_APP_NAME
         kwargs["client_type"] = "confidential"
-        kwargs["authorization_grant_type"] = "client-credentials"
+        kwargs["authorization_grant_type"] = "password"
         try:
             OAuth2App.objects.get(
                 name=kwargs["name"],
