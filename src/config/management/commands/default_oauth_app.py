@@ -6,7 +6,6 @@ from oauth2_provider.management.commands.createapplication import (
 from oauth2_provider.models import Application, get_application_model
 
 OAuth2App = get_application_model()
-OAUTH2_APP_NAME = settings.OAUTH2_APP_NAME
 
 
 class Command(CreateApplicationCommand):
