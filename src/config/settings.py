@@ -28,6 +28,7 @@ SECRET_KEY = env.str(
 DEBUG = env.bool("DEBUG", default=False)
 CORS_ALLOW_ALL_ORIGINS = env.bool("CORS_ALLOW_ALL_ORIGIN", default="False")
 CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
+OAUTH2_APP_NAME = "ricchi_snc_oauth"
 
 ALLOWED_HOSTS = env("ALLOWED_HOSTS", default=["*"])
 
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "config",
     "rest_framework",
     "oauth2_provider",
     "corsheaders",

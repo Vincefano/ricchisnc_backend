@@ -4,8 +4,13 @@ services:
       context: .
       dockerfile: src/docker/Dockerfile.development
     command: ["bash", "./src/config/bootstrap.sh"]
-    volumes:
-      - .:/app
+    develop:
+      watch:
+        - action: sync
+          path: .
+          target: /app
+          ignore:
+            - staticfiles
     ports:
       - "8000:8000"
     environment:
