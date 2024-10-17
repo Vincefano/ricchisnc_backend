@@ -17,7 +17,6 @@ echo "Applying migrations"
 python $MANAGEMENT migrate
 
 echo "Creating default oauth app"
-echo "SAVE THESE CREDENTIALS! THEY WON'T BE SHOWED AGAIN!"
 python $MANAGEMENT default_oauth_app
 
 echo "Avvio del server Django..."
