@@ -20,8 +20,11 @@ from django.urls import include, path
 
 from ricchi_auth.views import AuthTestView
 
+from .views import Healthz
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("oauth/", include("oauth2_provider.urls", namespace="oauth2_provider")),
     path("test/", AuthTestView.as_view(), name="test"),
+    path("healthz/", Healthz.as_view(), name="healthz"),
 ]
