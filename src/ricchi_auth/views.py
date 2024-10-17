@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.http.response import HttpResponse
+from oauth2_provider.views.generic import ProtectedResourceView
 
-# Create your views here.
+
+class AuthTestView(ProtectedResourceView):
+
+    def get(self, request):
+        return HttpResponse()

@@ -18,7 +18,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from ricchi_auth.views import AuthTestView
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("oauth/", include("oauth2_provider.urls", namespace="oauth2_provider")),
+    path("test/", AuthTestView.as_view(), name="test"),
 ]
