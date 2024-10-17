@@ -16,15 +16,31 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
+from oauth2_provider import urls
+from oauth2_provider import views as oauth2_views
 
-from ricchi_auth.views import AuthTestView
+from ricchi_auth.views.test import AuthTestView
+from ricchi_auth.views.token import CustomTokenView
 
 from .views import Healthz
 
+oauth2_patters = (
+    [
+        # Base urls
+        path("oauth/token/", CustomTokenView.as_view(), name="token"),
+        path(
+            "oauth/revoke_token/",
+            oauth2_views.RevokeTokenView.as_view(),
+            name="revoke-token",
+        ),
+    ]
+    + urls.management_urlpatterns
+    + urls.oidc_urlpatterns
+)
+
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("oauth/", include("oauth2_provider.urls", namespace="oauth2_provider")),
     path("test/", AuthTestView.as_view(), name="test"),
     path("healthz/", Healthz.as_view(), name="healthz"),
-]
+] + oauth2_patters
