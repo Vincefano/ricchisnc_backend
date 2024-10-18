@@ -29,7 +29,7 @@ class CustomTokenView(TokenView):
                     token_checksum=token_checksum
                 )
                 app_authorized.send(sender=self, request=request, token=token)
-                access_token_obj = AccessToken.objects.get(token=access_token)
+                access_token_obj = AccessToken.objects.get(token=token)
                 body["expires"] = str(access_token_obj.expires)
                 del body["expires_in"]
         response = HttpResponse(content=json.dumps(body), status=status)
